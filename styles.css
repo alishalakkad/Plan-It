@@ -14,6 +14,53 @@ font-family: 'Numans', sans-serif;
     padding-top: 7px;
 }
 
+/* Splash Screen 
+#custom-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100000;
+    width:100%;
+    background-color: #110e3a;
+  }
+  .flb {
+    background-color: rgba(3, 3, 29, 0.623);
+    height:100%;
+    width:100%;
+    animation: pulse 1s linear forwards;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .Aligner-item {
+    max-width: 50%;
+  }
+  .Aligner-item--top {
+    align-self: flex-start;
+  }
+  .Aligner-item--bottom {
+    align-self: flex-end;
+  }
+  #custom-overlay img {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    height: auto;
+    animation: animation 3100ms linear infinite both;
+    animation-delay: 1s;
+  }
+  @keyframes pulse {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  Splash screen ends */
+
 .container{
 height: 100%;
 align-content: center;
@@ -24,6 +71,7 @@ height: 370px;
 width: 400px;
 margin-left: 200px;
 margin-top: 100px;
+border-radius: 25px;
 background-color: rgba(0,0,0,0.5) !important;
 float: left;
 padding: 32px;
@@ -37,6 +85,7 @@ padding: 32px;
     width: 400px;
     margin-right: 200px;
     margin-top: 100px;
+    border-radius: 25px;
     background-color: rgba(0,0,0,0.5) !important;
     float: right;
     padding: 30px;
@@ -48,7 +97,7 @@ color: white;
 
 .input-group-prepend span{
 width: 50px;
-background-color:#FFC312;
+background-color:rgb(231, 235, 19);
 color: black;
 border:0 !important;
 }
