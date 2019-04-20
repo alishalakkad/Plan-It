@@ -1,11 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html,body{
-background-image: url('https://digitaladdictsblog.com/wp-content/uploads/2019/01/shutterstock_295846730.jpg');
+background-image: url('background.jpg');
 background-size: cover;
 background-repeat: no-repeat;
 height: 100%;
 font-family: 'Numans', sans-serif;
+}
+.heading{
+    position: relative;
+    text-align: center;
+    color: aliceblue;
+    padding-top: 7px;
 }
 
 .container{
@@ -13,27 +19,36 @@ height: 100%;
 align-content: center;
 }
 
-.card{
+.card1{
 height: 370px;
-margin-top: auto;
-margin-bottom: auto;
 width: 400px;
+margin-left: 200px;
+margin-top: 100px;
 background-color: rgba(0,0,0,0.5) !important;
+float: left;
+padding: 32px;
+
 }
+
+.card2{
+    height: 370px;
+    /* margin-top: auto;
+    margin-bottom: auto; */
+    width: 400px;
+    margin-right: 200px;
+    margin-top: 100px;
+    background-color: rgba(0,0,0,0.5) !important;
+    float: right;
+    padding: 30px;
+    }
 
 .card-header h3{
 color: white;
 }
 
-.social_icon{
-position: absolute;
-right: 20px;
-top: -45px;
-}
-
 .input-group-prepend span{
 width: 50px;
-background-color: #FFC312;
+background-color:#FFC312;
 color: black;
 border:0 !important;
 }
