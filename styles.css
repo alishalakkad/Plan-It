@@ -1,140 +1,164 @@
-@import url('https://fonts.googleapis.com/css?family=Numans');
+  @import url('https://fonts.googleapis.com/css?family=Numans');
 
-html,body{
-background-image: url('background.jpg');
-background-size: cover;
-background-repeat: no-repeat;
-height: 100%;
-font-family: 'Numans', sans-serif;
-}
-.heading{
-    position: relative;
-    text-align: center;
-    color: aliceblue;
-    padding-top: 7px;
-}
+  html,
+  body {
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 100%;
+      font-family: 'Numans', sans-serif;
+  }
 
-/* Splash Screen 
-#custom-overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 100000;
-    width:100%;
-    background-color: #110e3a;
+  .heading {
+      position: relative;
+      text-align: center;
+      color: aliceblue;
+      padding-top: 7px;
   }
-  .flb {
-    background-color: rgba(3, 3, 29, 0.623);
-    height:100%;
-    width:100%;
-    animation: pulse 1s linear forwards;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .Aligner-item {
-    max-width: 50%;
-  }
-  .Aligner-item--top {
-    align-self: flex-start;
-  }
-  .Aligner-item--bottom {
-    align-self: flex-end;
-  }
-  #custom-overlay img {
-    display: block;
-    margin: 0 auto;
-    width: 50%;
-    height: auto;
-    animation: animation 3100ms linear infinite both;
-    animation-delay: 1s;
-  }
-  @keyframes pulse {
-    0% {
-      opacity:0;
+
+  /* Splash Screen 
+  #custom-overlay {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 100000;
+      width:100%;
+      background-color: #110e3a;
     }
-    100% {
-      opacity:1;
+    .flb {
+      background-color: rgba(3, 3, 29, 0.623);
+      height:100%;
+      width:100%;
+      animation: pulse 1s linear forwards;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+    .Aligner-item {
+      max-width: 50%;
+    }
+    .Aligner-item--top {
+      align-self: flex-start;
+    }
+    .Aligner-item--bottom {
+      align-self: flex-end;
+    }
+    #custom-overlay img {
+      display: block;
+      margin: 0 auto;
+      width: 50%;
+      height: auto;
+      animation: animation 3100ms linear infinite both;
+      animation-delay: 1s;
+    }
+    @keyframes pulse {
+      0% {
+        opacity:0;
+      }
+      100% {
+        opacity:1;
+      }
+    }
+    Splash screen ends */
+
+  .container {
+      height: 100%;
+      align-content: center;
   }
-  Splash screen ends */
 
-.container{
-height: 100%;
-align-content: center;
-}
+  .card1 {
+      height: 370px;
+      width: 400px;
+      margin-left: 200px;
+      margin-top: 100px;
+      border-radius: 25px;
+      background-color: rgba(0, 0, 0, 0.5) !important;
+      float: left;
+      padding: 32px;
 
-.card1{
-height: 370px;
-width: 400px;
-margin-left: 200px;
-margin-top: 100px;
-border-radius: 25px;
-background-color: rgba(0,0,0,0.5) !important;
-float: left;
-padding: 32px;
+  }
 
-}
+  .card2 {
+      height: 370px;
+      /* margin-top: auto;
+      margin-bottom: auto; */
+      width: 400px;
+      margin-right: 200px;
+      margin-top: 100px;
+      border-radius: 25px;
+      background-color: rgba(0, 0, 0, 0.5) !important;
+      float: right;
+      padding: 30px;
+  }
 
-.card2{
-    height: 370px;
-    /* margin-top: auto;
-    margin-bottom: auto; */
-    width: 400px;
-    margin-right: 200px;
-    margin-top: 100px;
-    border-radius: 25px;
-    background-color: rgba(0,0,0,0.5) !important;
-    float: right;
-    padding: 30px;
-    }
 
-.card-header h3{
-color: white;
-}
+  .box1 {
+      height: 250px;
+      width: 400px;
+      margin-left: 200px;
+      margin-top: 100px;
+      border-radius: 25px;
+      background-color: rgba(0, 0, 0, 0.5) !important;
+      float: left;
+      padding: 32px;
+  }
 
-.input-group-prepend span{
-width: 50px;
-background-color:rgb(231, 235, 19);
-color: black;
-border:0 !important;
-}
+  .box2 {
+      height: 250px;
+      width: 400px;
+      margin-right: 200px;
+      margin-top: 100px;
+      border-radius: 25px;
+      background-color: rgba(0, 0, 0, 0.5) !important;
+      float: right;
+      padding: 30px;
+  }
 
-input:focus{
-outline: 0 0 0 0  !important;
-box-shadow: 0 0 0 0 !important;
+  .card-header h3 {
+      color: white;
+  }
 
-}
+  .input-group-prepend span {
+      width: 50px;
+      background-color: rgb(231, 235, 19);
+      color: black;
+      border: 0 !important;
+  }
 
-.remember{
-color: white;
-}
+  input:focus {
+      outline: 0 0 0 0 !important;
+      box-shadow: 0 0 0 0 !important;
 
-.remember input
-{
-width: 20px;
-height: 20px;
-margin-left: 15px;
-margin-right: 5px;
-}
+  }
 
-.login_btn{
-color: black;
-background-color: #FFC312;
-width: 100px;
-}
+  .remember {
+      color: white;
+  }
 
-.login_btn:hover{
-color: black;
-background-color: white;
-}
+  .remember input {
+      width: 20px;
+      height: 20px;
+      margin-left: 15px;
+      margin-right: 5px;
+  }
 
-.links{
-color: white;
-}
+  .login_btn {
+      color: black;
+      background-color: #FFC312;
+      width: 100px;
+  }
 
-.links a{
-margin-left: 4px;
-}
+  .login_btn:hover {
+      color: black;
+      background-color: white;
+  }
+
+  .links {
+      color: white;
+  }
+
+  .links a {
+      margin-left: 4px;
+  }
