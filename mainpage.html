@@ -14,17 +14,9 @@
 
 	<!--Custom styles-->
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <!-- <script src="eventfunctions.js"></script> -->
-    <script src="./routes/index.js"></script>
+    <script src="eventfunctions.js"></script>
 </head>
 <body>
-        <!-- <div id="custom-overlay" [style.display]="splash ? 'flex': 'none'" >
-                <div class="flb">
-                  <div class="Aligner-item Aligner-item--top"></div>
-                  <img src="assets/logo.svg">
-                  <div class="Aligner-item Aligner-item--bottom"></div>
-                </div>
-              </div> -->
     <div class="heading"><h1>Plan-It</h1></div><hr width="50%" color="white">
     <div>
         <!-- Sign In Part -->
@@ -38,7 +30,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input id="username" type="text" class="form-control" placeholder="Username">
+                            <input type="text" class="form-control" placeholder="Username">
                             
                         </div>
                         <div class="input-group form-group">
@@ -61,44 +53,33 @@
                     <h3>Sign Up</h3>
                 </div>
                 <div class="card-body">
-                    <form action="/signup" method="post">
-                        <body>
-                            <!-- <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-email"></i></span>
-                                    </div>
-                                    <input type="email" class="form-control" placeholder="Email">
-                                    
-                                </div> -->
+                    <form>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input id="user" type="text" class="form-control" placeholder="Username">
+                            <input type="text" class="form-control" placeholder="Username">
                             
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input id="pass" type="password" class="form-control" placeholder="Password">
+                            <input type="password" class="form-control" placeholder="Password">
                         </div>
                         <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-key"></i></span>
                                 </div>
-                                <input id="confirmpass" type="password" class="form-control" placeholder="Confirm password">
+                                <input type="password" class="form-control" placeholder="Confirm password">
                             </div>
                         <div class="form-group" onclick="signup()">
-                            <input type="submit" value="Sign Up" class="btn float-right login_btn" id="signupbtn" onclick="signup()">
+                            <input type="button" value="Sign Up" class="btn float-right login_btn" onclick="signup()">
                         </div>
-                    </body>
                     </form>
                 </div>
             </div>
     </div>
         
-
-
 </body>
 </html>
