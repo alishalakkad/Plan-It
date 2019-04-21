@@ -53,6 +53,7 @@ router.post('/signup', function(req, res, next){
         user = await createUser(req.body.username, req.body.password)
     }
   })
+  res.redirect('/');
 });
 
 router.get('/update', function(req, res, next){
