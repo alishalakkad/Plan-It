@@ -5,6 +5,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Username is required']
   },
+  password: {
+    type: String,
+    required: [true, 'Password is required']
+  },
   created: {
     type: Date,
     required: [true, 'Created date is required']
