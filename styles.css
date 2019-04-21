@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
-
-html,body{
-background-image: url('background.jpg');
-background-size: cover;
-background-repeat: no-repeat;
-height: 100%;
-font-family: 'Numans', sans-serif;
+html, body {
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
 }
-.heading{
+
+.heading {
     position: relative;
     text-align: center;
     color: aliceblue;
@@ -61,80 +61,75 @@ font-family: 'Numans', sans-serif;
   }
   Splash screen ends */
 
-.container{
-height: 100%;
-align-content: center;
+.container {
+    height: 100%;
+    align-content: center;
 }
 
-.card1{
-height: 370px;
-width: 400px;
-margin-left: 200px;
-margin-top: 100px;
-border-radius: 25px;
-background-color: rgba(0,0,0,0.5) !important;
-float: left;
-padding: 32px;
-
-}
-
-.card2{
+.card1 {
     height: 370px;
-    /* margin-top: auto;
-    margin-bottom: auto; */
+    width: 400px;
+    margin-left: 200px;
+    margin-top: 100px;
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    float: left;
+    padding: 32px;
+}
+
+.card2 {
+    height: 370px;
     width: 400px;
     margin-right: 200px;
     margin-top: 100px;
     border-radius: 25px;
-    background-color: rgba(0,0,0,0.5) !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
     float: right;
     padding: 30px;
-    }
-
-.card-header h3{
-color: white;
 }
 
-.input-group-prepend span{
-width: 50px;
-background-color:rgb(231, 235, 19);
-color: black;
-border:0 !important;
+.card-header h3 {
+    color: white;
 }
 
-input:focus{
-outline: 0 0 0 0  !important;
-box-shadow: 0 0 0 0 !important;
-
+.input-group-prepend span {
+    width: 50px;
+    background-color: #FFC312;
+    color: black;
+    border: 0 !important;
 }
 
-.remember{
-color: white;
+input:focus {
+    outline: 0 0 0 0 !important;
+    box-shadow: 0 0 0 0 !important;
 }
 
-.remember input
-{
-width: 20px;
-height: 20px;
-margin-left: 15px;
-margin-right: 5px;
+.remember {
+    color: white;
 }
 
-.login_btn{
-color: black;
-background-color: #FFC312;
-width: 100px;
+.remember input {
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 5px;
 }
 
-.login_btn:hover{
-color: black;
-background-color: white;
+.login_btn {
+    color: black;
+    background-color: #FFC312;
+    width: 100px;
 }
 
-.links{
-color: white;
+.login_btn:hover {
+    color: black;
+    background-color: white;
 }
 
-.links a{
-margin-left: 4px;
+.links {
+    color: white;
+}
+
+.links a {
+    margin-left: 4px;
 }
