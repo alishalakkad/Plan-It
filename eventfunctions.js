@@ -5,3 +5,11 @@ function login() {
 function signup() {
     alert("Successfully signed up!");
 }
+
+function createEvent(){
+    location.href = "planner.html"
+}
+
+function joinEvent(){
+    location.href = "planner.html"
+}

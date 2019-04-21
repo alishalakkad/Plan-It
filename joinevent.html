@@ -1,10 +1,65 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>
-            Create or Join Event!
-        </title>
-    </head>
-    <body>
-        <h1>Page to create or join event</h1>
-    </body>
+<head>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+	<title>Login Page</title>   
+	<!--Bootsrap 4 CDN-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+	<!--Custom styles-->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="eventfunctions.js"></script>
+</head>
+<body>
+    <div class="heading"><h1>Plan-It</h1></div><hr width="50%" color="white">
+    <div>
+        <!-- Create Event Part -->
+        <div class="box1">
+                <div class="card-header">
+                    <h3> Create Event </h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="input-group form-group">
+                            <!-- <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div> -->
+                            <input type="text" class="form-control" placeholder="Event Name">
+                            
+                        </div>
+                        <div class="form-group" onclick="createEvent()">
+                            <input type="button" value="Create" class="btn float-right login_btn" onclick="createEvent()">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Join Event Part -->
+        <div class="box2">
+                <div class="card-header">
+                    <h3> Join Event </h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="input-group form-group">
+                            <!-- <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div> -->
+                            <input type="text" class="form-control" placeholder="Event Code">
+                        </div>
+                        <div class="form-group" onclick="joinEvent()">
+                            <input type="button" value="Join" class="btn float-right login_btn" onclick="joinEvent()">
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </div>
+</body>
 </html>
