@@ -39,19 +39,41 @@ router.post('/signup', function(req, res, next){
 
       connector = mongoose.connect(CONNECTION_URL,{ useNewUrlParser: true }, function(err, db){
         assert.equal(null, err);
-        db.collection('user').insertOne(user, function(err, result) {
-          assert.equal(null, err);
-          console.log('Item inserted');
-          res.redirect('/');
-          // alert("Successfully signed up!");
-          db.close();
-        });
+
+        db.collection('user').findOne({username: req.body.username}, function(err, result){
+          if(err) throw err;
+          if(result){
+            console.log('found')
+          }
+          else {
+            console.log('not found')
+
+            db.collection('user').insertOne(user, function(err, result) {
+              assert.equal(null, err);
+              console.log('Item inserted');
+              res.redirect('/');
+              // alert("Successfully signed up!");
+              db.close();
+            });
+          }
+        })
+
+        // db.collection('user').insertOne(user, function(err, result) {
+        //   assert.equal(null, err);
+        //   console.log('Item inserted');
+        //   res.redirect('/');
+        //   // alert("Successfully signed up!");
+        //   db.close();
+        // });
       })
     
   });
   
 
 router.get('/signin', function(req, res, next){
+
+  
+
   res.render("joinevent")
 });
 
