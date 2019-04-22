@@ -30,7 +30,7 @@
                             <!-- <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div> -->
-                            <input type="text" class="form-control" placeholder="Event Name">
+                            <input id="eve" type="text" class="form-control" placeholder="Event Name">
                             
                         </div>
                         <div class="form-group" onclick="createEvent()">
@@ -63,6 +63,21 @@
     </div>
 </body>
 </html>
+
+<!-- JAVASCRPIT STARTS HERE -->
+<script>
+
+function createEvent(){
+    console.log("in create event");
+    fetch("/createevent", {
+        method: 'post',
+        body: JSON.stringify({username : document.getElementById("username").value, password : document.getElementById("password").value}),
+        headers: { 'Content-type': 'application/json' }
+    })
+}
+
+</script>
+
 
 <!-- - CSS - -->
 
