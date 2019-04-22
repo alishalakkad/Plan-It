@@ -3,23 +3,14 @@ var router = express.Router();
 var assert = require('assert');
 const mongoose = require("mongoose")
 const BodyParser = require("body-parser");
-const userSchema = require('../userSchema.js')
-const User = mongoose.model('user', userSchema, 'user')
 
-var url = 'mongodb://localhost:27017/test'
+
 const CONNECTION_URL = "mongodb+srv://cs252:cs252@planitdb-dvbrl.mongodb.net/test?retryWrites=truee";
 var connector;
 
 router.use(BodyParser.json());
 router.use(BodyParser.urlencoded({ extended: true }));
 
-async function createUser(username, password) {
-  return new User({
-    username,
-    password,
-    created: Date.now()
-  }).save()
-}
 
 async function findUser(username) {
   return await User.findOne({ username })
@@ -35,33 +26,33 @@ router.get('/get-data', function(req, res, next){
 });
 
 router.post('/signup', function(req, res, next){
-  // var username = document.getElementById("username").value;
-  // var password = document.getElementById("pass").value;
-  console.log("hehehehhehehhe")
-  console.log(req);
-  ;(async () => {
+  
+  console.log(req.body);
+  
+  var user = {
+    username: req.body.username,
+    password: req.body.password,
+    created: Date(Date.now())
+  };
 
-      connector = mongoose.connect(CONNECTION_URL, function(err, db){
+  // ;(async () => {
+
+      connector = mongoose.connect(CONNECTION_URL,{ useNewUrlParser: true }, function(err, db){
         assert.equal(null, err);
+        db.collection('user').insertOne(user, function(err, result) {
+          assert.equal(null, err);
+          console.log('Item inserted');
+          res.redirect('/');
+          // alert("Successfully signed up!");
+          db.close();
+        });
       })
+    
+  });
+  
 
-      let user1 = await connector.then(async () => {
-        return findUser(req.body.username)
-      })
-        
-    if (!user1) {
-        user = await createUser(req.body.username, req.body.password)
-    }
-  })
-  res.redirect('/');
-});
-
-router.get('/update', function(req, res, next){
-
-});
-
-router.get('/delete', function(req, res, next){
-
+router.get('/signin', function(req, res, next){
+  res.render("joinevent")
 });
 
 module.exports = router;

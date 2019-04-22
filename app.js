@@ -11,8 +11,7 @@ const CONNECTION_URL = "mongodb+srv://cs252:cs252@planitdb-dvbrl.mongodb.net/tes
 const DATABASE_NAME = "test";
 
 var app = Express();
-var username = "cs 2523";
-var password = "hello";
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');

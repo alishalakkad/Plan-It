@@ -25,7 +25,7 @@
                     <h3>Sign In</h3>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form id="myFormSignin" onsubmit="signin()">
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -39,8 +39,8 @@
                             </div>
                             <input type="password" class="form-control" placeholder="Password">
                         </div>
-                        <div class="form-group" onclick="login()">
-                            <input type="button" value="Login" class="btn float-right login_btn" onclick="login()">
+                        <div class="form-group" >
+                            <input type="submit" value="Login" class="btn float-right login_btn">
                         </div>
                     </form>
                 </div>
@@ -53,7 +53,7 @@
                     <h3>Sign Up</h3>
                 </div>
                 <div class="card-body">
-                    <form id="myForm" onsubmit="signup()">
+                    <form id="myFormSignup" onsubmit="signup()">
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -73,7 +73,7 @@
                                 </div>
                                 <input id="confirmpass" type="password" class="form-control" placeholder="Confirm password">
                             </div>
-                        <div class="form-group" onclick="signup()">
+                        <div class="form-group" >
                             <input type="submit" value="Sign Up" class="btn float-right login_btn">
                         </div>
                     </form>
@@ -86,10 +86,14 @@
 
 <script>
 
-console.log("enterted jssss")
 
-function login() {
-    location.href = "joinevent.html"
+function signin() {
+    console.log("enterted jssss")
+
+    var myform = document.getElementById("myFormSignin");
+    myform.action = "/signin";
+
+
 }
 
 function createEvent(){
@@ -103,17 +107,25 @@ function joinEvent(){
 
 
 function signup(){
-    var myform = document.getElementById("myForm");
+    var myform = document.getElementById("myFormSignup");
     // e.preventDefault();
     myform.action = "/signup";
-    console.log("heereere");
+    //myform.method = "post";
+    console.log("this is me");
+    fetch('/signup', {
+        method: 'post',
+        body: JSON.stringify({username : document.getElementById("username").value, password : document.getElementById("password").value}),
+        headers: { 'Content-type': 'application/json' }
+    });
+    
 }
+
 </script>
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Numans');
 html, body {
-    background-image: url("./");
+    background-image: url('background.jpg');
     background-size: cover;
     background-repeat: repeat;
     height: 100%;

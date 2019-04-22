@@ -55,30 +55,14 @@ function signup(){
     // e.preventDefault();
     myform.action = "/signup";
     console.log("heereere");
-    // fetch('/signup',{
-    //     method : 'post',
-    //     body : JSON.stringify({username : document.getElementById("username").value, password : document.getElementById("password")}),
-    //     headers : {
-    //         "Content-Type" : "application/json; charset=utf-8"
-    //     }
-    // })
+    fetch('/signup',{
+        method : 'post',
+        body : JSON.stringify({username : document.getElementById("username").value, password : document.getElementById("password")}),
+        headers : {
+            "Content-Type" : "application/json; charset=utf-8"
+        }
+    })
 
 
-    // .then((response)=>{
-    //     return response.json();
-    // }).then((data)=>{
-    //     if(!data.error){
-    //         if(data.result.ok == 1 && data.result.n == 1){
-    //             let ids = buildIDS(data.document);
-    //             display.append(buildTemplate(data.document,ids));
-    //             editTodo(data.document,ids.todoID,ids.editID);
-    //             deleteTodo(data.document,ids.listItemID,ids.deleteID);
-    //             displayMessage(true,data.msg);
-    //         }
-    //     }
-    //     else
-    //         displayMessage(false,data.error.message);
-    //     resetTodosInput();
-        
-    // });
+
 }
