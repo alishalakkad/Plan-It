@@ -99,13 +99,12 @@ function signin() {
     console.log("enterted jssss")
 
     var myform = document.getElementById("myFormSignin");
+    myform.action = "/signin";
     fetch('/signin', {
         method: 'post',
         body: JSON.stringify({username : document.getElementById("signinuser").value, password : document.getElementById("signinpass").value}),
         headers: { 'Content-type': 'application/json' }
     });
-   myform.action = "/signin";
-
 
 }
 

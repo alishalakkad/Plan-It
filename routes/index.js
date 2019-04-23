@@ -63,38 +63,100 @@ router.post('/signup', function(req, res, next){
     
   });
 
-  router.get('/signin', function(req, res, next){
-    res.redirect("/event")
-  });
+  // router.get('/signin', function(req, res, next){
+  //   res.redirect("/event")
+  // });
 
   router.get("/event", function(req, res, next){
       res.render("joinevent")
   });
 
-router.post('/signin', function(req, res, next){
+router.get('/signin', function(req, res, next){
   console.log('inside')
 
-  console.log(req.body)
+  console.log(req)
 
-  connector = mongoose.connect(CONNECTION_URL,{ useNewUrlParser: true }, function(err, db){
-    assert.equal(null, err);
+  // console.log(req.body)
 
-    db.collection('user').findOne({username: req.body.username, password: req.body.password}, function(err, result){
-      if(err) throw err;
-      if(result){
-        console.log('found')
-   //     location.href('../joinevent.html')
-      }
-      else {
-        console.log('not found')
-      }
-      db.close();
+  // connector = mongoose.connect(CONNECTION_URL,{ useNewUrlParser: true }, function(err, db){
+  //   assert.equal(null, err);
+
+  //   db.collection('user').findOne({username: req.body.username, password: req.body.password}, function(err, result){
+  //     if(err) throw err;
+  //     if(result){
+  //       console.log('found')
+  //       db.close();
+  //       return res.redirect("/event");
+  //  //     location.href('../joinevent.html')
+  //     }
+  //     else {
+  //       console.log('not found')
+  //     }
+  //     db.close();
       
-    })
-  })
+  //   })
+  // })
 
     
 
 });
+
+router.post('/createevent', function(req, res, next){
+  
+  console.log(req.body);
+  var id = Math.floor(Math.random()*90000) + 10000;
+  var unique = 0;
+  // connector = mongoose.connect(CONNECTION_URL,{ useNewUrlParser: true }, function(err, db){
+  //     assert.equal(null, err);
+  //     while(unique == 0){
+  //       db.collection('user').findOne({username: req.body.username, password: req.body.password}, function(err, result){
+  //         if(err) throw err;
+  //         if(result){
+  //           id = Math.floor(Math.random()*90000) + 10000;
+  //         }
+  //         else {
+  //           unique = 1;
+  //         }
+  //         console.log("hello")
+  //     })
+  //   }
+  // })
+  console.log(id);
+
+  async function returnid(id){
+    return id;
+  }
+
+  var val;
+  var event = {
+    name: req.body.eventname,
+    eventId: id,
+    members: ""
+  };
+  console.log(event)
+
+      connector = mongoose.connect(CONNECTION_URL,{ useNewUrlParser: true }, function(err, db){
+        assert.equal(null, err);
+
+            db.collection('event').insertOne(event, function(err, result) {
+              assert.equal(null, err);
+              console.log('Event inserted');
+              
+              // res.jsonp({success : true})
+              // alert("Successfully signed up!");
+              
+              // console.log(db.collection('event').find({name:req.body.eventname}));
+              db.close();
+            });
+      })
+      // let user = await connector.then(async () => {
+      //   console.log("coming here")
+      //   return returnid(id);
+      // })
+      
+      return id;
+      // res.redirect('/');
+    
+  });
 
 module.exports = router;
