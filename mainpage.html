@@ -36,14 +36,14 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Username">
+                            <input id="signinuser" type="text" class="form-control" placeholder="Username">
                             
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" class="form-control" placeholder="Password">
+                            <input id="signinpass" type="password" class="form-control" placeholder="Password">
                         </div>
                         <div class="form-group" >
                             <input type="submit" value="Login" class="btn float-right login_btn">
@@ -99,7 +99,12 @@ function signin() {
     console.log("enterted jssss")
 
     var myform = document.getElementById("myFormSignin");
-    myform.action = "/signin";
+    fetch('/signin', {
+        method: 'post',
+        body: JSON.stringify({username : document.getElementById("signinuser").value, password : document.getElementById("signinpass").value}),
+        headers: { 'Content-type': 'application/json' }
+    });
+   myform.action = "/signin";
 
 
 }

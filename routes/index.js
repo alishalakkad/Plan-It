@@ -3,6 +3,7 @@ var router = express.Router();
 var assert = require('assert');
 const mongoose = require("mongoose")
 const BodyParser = require("body-parser");
+var found = 0;
 
 
 const CONNECTION_URL = "mongodb+srv://cs252:cs252@planitdb-dvbrl.mongodb.net/test?retryWrites=truee";
@@ -58,22 +59,42 @@ router.post('/signup', function(req, res, next){
             });
           }
         })
-
-        // db.collection('user').insertOne(user, function(err, result) {
-        //   assert.equal(null, err);
-        //   console.log('Item inserted');
-        //   res.redirect('/');
-        //   // alert("Successfully signed up!");
-        //   db.close();
-        // });
       })
     
   });
-  
+
+  router.get('/signin', function(req, res, next){
+    res.redirect("/event")
+  });
+
+  router.get("/event", function(req, res, next){
+      res.render("joinevent")
+  });
 
 router.post('/signin', function(req, res, next){
+  console.log('inside')
 
-  res.redirect("/event")
+  console.log(req.body)
+
+  connector = mongoose.connect(CONNECTION_URL,{ useNewUrlParser: true }, function(err, db){
+    assert.equal(null, err);
+
+    db.collection('user').findOne({username: req.body.username, password: req.body.password}, function(err, result){
+      if(err) throw err;
+      if(result){
+        console.log('found')
+   //     location.href('../joinevent.html')
+      }
+      else {
+        console.log('not found')
+      }
+      db.close();
+      
+    })
+  })
+
+    
+
 });
 
 module.exports = router;
