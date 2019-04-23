@@ -25,7 +25,7 @@
                     <h3> Create Event </h3>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form >
                         <div class="input-group form-group">
                             <!-- <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -33,13 +33,15 @@
                             <input id="eve" type="text" class="form-control" placeholder="Event Name">
                             
                         </div>
-                        <div class="form-group" onclick="createEvent()">
-                            <input type="button" value="Create" class="btn float-right login_btn" onclick="createEvent()">
+                        <div class="form-group">
+                            <input type="button" value="Create" class="btn float-right login_btn" onclick="creatEvent()">
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+        
+        
 
         <!-- Join Event Part -->
         <div class="box2">
@@ -60,20 +62,27 @@
                     </form>
                 </div>
             </div>
-    </div>
+            <!-- event code -->
+            <div class="box3" id="eventcode">
+                <div class="card-header">
+                    <h3> Event Code : </h3>
+                </div>
+            </div>
+    <!-- </div> -->
 </body>
 </html>
 
 <!-- JAVASCRPIT STARTS HERE -->
 <script>
-
-function createEvent(){
+console.log("in create alallalala");
+function creatEvent(){
     console.log("in create event");
-    fetch("/createevent", {
-        method: 'post',
-        body: JSON.stringify({username : document.getElementById("username").value, password : document.getElementById("password").value}),
-        headers: { 'Content-type': 'application/json' }
-    })
+    document.getElementById("eventcode").style.visibility = "visible";
+    // fetch("/createevent", {
+    //     method: 'post',
+    //     body: JSON.stringify({username : document.getElementById("username").value, password : document.getElementById("password").value}),
+    //     headers: { 'Content-type': 'application/json' }
+    // })
 }
 
 </script>
@@ -146,6 +155,19 @@ function createEvent(){
               background-color: rgba(0, 0, 0, 0.5) !important;
               float: right;
               padding: 30px;
+              
+          }
+          .box3 {
+              height: 100px;
+              width: 400px;
+              margin-left: 200px;
+              margin-top: 50px;
+              border-radius: 25px;
+              background-color: rgba(0, 0, 0, 0.5) !important;
+              float: left;
+              padding: 30px;
+              visibility: hidden;
+              
           }
         
           .card-header h3 {

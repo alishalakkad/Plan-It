@@ -21,8 +21,8 @@ router.get('/', function(req, res, next) {
   res.render("mainpage")
 });
 
-router.get('/get-data', function(req, res, next){
-
+router.get('/event', function(req, res, next){
+    res.render("joinevent")
 });
 
 router.post('/signup', function(req, res, next){
@@ -51,6 +51,7 @@ router.post('/signup', function(req, res, next){
             db.collection('user').insertOne(user, function(err, result) {
               assert.equal(null, err);
               console.log('Item inserted');
+              // res.jsonp({success : true})
               res.redirect('/');
               // alert("Successfully signed up!");
               db.close();
@@ -70,11 +71,9 @@ router.post('/signup', function(req, res, next){
   });
   
 
-router.get('/signin', function(req, res, next){
+router.post('/signin', function(req, res, next){
 
-  
-
-  res.render("joinevent")
+  res.redirect("/event")
 });
 
 module.exports = router;
