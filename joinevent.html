@@ -17,7 +17,7 @@
     <script src="eventfunctions.js"></script>
 </head>
 <body>
-    <div class="heading"><h1>Plan-It</h1></div><hr width="50%" color="white">
+    <div class="heading"><h1>Hello {{ curname }}!</h1></div><hr width="50%" color="white">
     <div>
         <!-- Create Event Part -->
         <div class="box1">
@@ -54,7 +54,7 @@
                             <!-- <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div> -->
-                            <input type="text" class="form-control" placeholder="Event Code">
+                            <input id="eventcode" type="text" class="form-control" placeholder="Event Code">
                         </div>
                         <div class="form-group" onclick="joinEvent()">
                             <input type="button" value="Join" class="btn float-right login_btn" onclick="joinEvent()">
@@ -87,6 +87,15 @@ function creatEvent(){
         headers: { 'Content-type': 'application/json' }
     })
 }
+
+// function joinEvent(){
+//     console.log("in join event")
+//     fetch("/joinevent", {
+//         method: 'post',
+//         body: JSON.stringify({eventcode : document.getElementById("eventcode").value}),
+//         headers: { 'Content-type': 'application/json' }
+//     })
+// }
 
 </script>
 
