@@ -31,7 +31,7 @@
                     <h3>Sign In</h3>
                 </div>
                 <div class="card-body">
-                    <form id="myFormSignin" onsubmit="signin()">
+                    <form id="myFormSignin">
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -46,7 +46,7 @@
                             <input id="signinpass" type="password" class="form-control" placeholder="Password">
                         </div>
                         <div class="form-group" >
-                            <input type="submit" value="Login" class="btn float-right login_btn">
+                            <input type="button" value="Login" class="btn float-right login_btn" onclick="signin()">
                         </div>
                     </form>
                 </div>
@@ -105,15 +105,20 @@ function signin() {
         body: JSON.stringify({username : document.getElementById("signinuser").value, password : document.getElementById("signinpass").value}),
         headers: { 'Content-type': 'application/json' }
     }).then(function(response){
+        console.log("got response")
+        console.log(response)
+    
         if(response){
-            console.log("got response")
-            console.log(response)
+            console.log("got respodddnse")
+            
+            location.href = "/event";
         }
         else{
+            console.log("wkefjbwkef")
             alert("not signed in")
         }
     });
-    myform.action = "/signin";
+    // myform.action = "/signin";
     // $.ajax({
     //     dataType: 'json',
     //     data: $('myFormSignin').serialize(),

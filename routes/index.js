@@ -155,16 +155,17 @@ router.post('/signup', function(req, res, next){
             console.log('found')
             // db.close();
 
-            router.render('/event', function(err, html){
-              res.sendFile(path.join(__dirname, "../joinevent.html"))
-            });
+            // router.render('/event', function(err, html){
+            //   res.sendFile(path.join(__dirname, "../joinevent.html"))
+            // });
             
-            // res.send(result);
+            res.send(result);
             console.log("sent result!")
        //     location.href('../joinevent.html')
           }
           else {
             console.log('not found')
+            // res.send(null);
           }
           db.close();
           

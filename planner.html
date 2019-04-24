@@ -61,7 +61,7 @@
             {{# each items }}
                 <article class="item">
                     <ul><li><div> 
-                            <input type="checkbox" name="task" value="t" style="height: 17px;width: 17px">
+                            <input type="checkbox" name="task" value="t" style="height: 17px;width: 17px" onclick="clicked()">
                     Task: {{ this.task }}
                     <br>
                     <img src="https://img.icons8.com/dusk/64/000000/task.png" width="20px">
@@ -75,7 +75,7 @@
     <!-- Tasks done box -->
 
     <div id="done" style="background-color:rgba(0,0,0,0.5); height: 500px; width: 670px; float: right; padding: 30px; margin-right: 50px; color: white; border-radius: 25px; overflow-y: auto;">
-        
+
         <h3 class="heading">Tasks Done</h3>
     </div>
 </body>
@@ -102,6 +102,7 @@ function showUrgent(){
 //function to move task from "to do" to "done"
 function clicked(){
     //add code to remove from tasks database and print list again
+    var val = 
     
     //print to done list
     document.getElementById("done").innerHTML += "<img src=\"https://img.icons8.com/color/48/000000/checked-checkbox.png\" width=\"30px\">";
