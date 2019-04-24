@@ -34,20 +34,7 @@ router.get('/planner', function(req, res, next){
   res.render("planner")
 });
 
-router.get('/eventcode', function(req, res, next){
-  var code;
-  mongoose.connect(CONNECTION_URL, { useNewUrlParser: true }, function(err, db){
-    assert.equal(null, err);
-    var cursor = db.collection("event").findOne();
-    cursor.forEach(function(doc, err){
-      assert.equal(null, err);
-      resultArray.push(doc);
-    }, function(){
-      db.close();
-      res.render('planner', {items: resultArray});
-    })
-  })
-})
+
 
 router.get('/get-tasks', function(req, res, next){
   var resultArray = [];
