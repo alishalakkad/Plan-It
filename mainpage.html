@@ -99,12 +99,40 @@ function signin() {
     console.log("enterted jssss")
 
     var myform = document.getElementById("myFormSignin");
-    myform.action = "/signin";
+    
     fetch('/signin', {
         method: 'post',
         body: JSON.stringify({username : document.getElementById("signinuser").value, password : document.getElementById("signinpass").value}),
         headers: { 'Content-type': 'application/json' }
+    }).then(function(response){
+        if(response){
+            console.log("got response")
+            console.log(response)
+
+        }
+        else{
+            alert("not signed in")
+        }
     });
+    myform.action = "/signin";
+    // $.ajax({
+    //     dataType: 'json',
+    //     data: $('myFormSignin').serialize(),
+    //     type: 'POST',
+    //     url: "./signin",
+    //     complete: function(){
+    //         console.log("completeetetettetete");
+    //     },
+    //     success: function(data){
+    //         console.log(data);
+    //         console.log("successsssss");
+    //     },
+    //     error: function(){
+    //         console.log("Errorororor")
+    //     }
+
+    // });
+
 
 }
 

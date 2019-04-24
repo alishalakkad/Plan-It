@@ -19,9 +19,30 @@ var usersRouter = require('./routes/event');
 var engines = require('consolidate');
 
 app.set('views', __dirname);
-app.engine('html', engines.mustache);
+// app.engine('html', engines.mustache);
+app.engine('html', require('hbs').__express);
 app.set('view engine', 'html');
 
+// app.get('/signin', function(req, res ){
+
+//     console.log(req.body + "   wlrkngwlrgnlwr")
+//     connector = mongoose.connect(CONNECTION_URL,{ useNewUrlParser: true }, function(err, db){
+//       assert.equal(null, err);
+//       db.collection('user').findOne(req.data, function(err, result){
+//         if(err) throw err;
+//         if(result){
+//           console.log('found')
+//           db.close();
+//         //   return res.redirect("/event");      
+//     }
+//         else {
+//           console.log('not found')
+//         }
+//         db.close();
+        
+//       })
+//     })
+//   });
 
 // app.use(BodyParser.json());
 // app.use(BodyParser.urlencoded({ extended: true }));
@@ -43,6 +64,8 @@ var database, collection, connector;
 
 app.use('/', indexRouter);
 app.use('/signup', indexRouter);
+app.use('/signin', indexRouter);
+app.use('/event', indexRouter);
 
 // app.use('/', (req, res) => {
 //     res.sendFile(__dirname+"/mainpage.html")

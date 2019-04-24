@@ -29,6 +29,7 @@
     </div>
     
     <!-- Add event bar -->
+    <form method="GET" id="taskForm" onsubmit="getTask()">
     <div style="width:1450px; padding-left: 60px;">
         <div class="input-group">
             <div class="input-group-prepend">
@@ -43,17 +44,28 @@
                     <a class="dropdown-item" href="#">Another action</a>
                     <a class="dropdown-item" href="#">Something else here</a>
                 </div>
-                <button class="btn btn-outline-secondary" id="add" type="button" onclick="getTask()">Add</button>
+                <button class="btn btn-outline-secondary" id="add" type="submit">Add</button>
             </div>
         </div>
     </div>
+</form>
     <hr>
     <!-- Tasks to do box -->
     <div id="myDiv" style="background-color:rgba(0,0,0,0.5); height: 500px; width: 670px; float: left; padding: 30px; margin-left: 50px; color: white; border-radius: 25px;">
         <h3 class="heading">Tasks To Do</h3>
-        <hr width="70%" color="gray">
-        <hr width="70%" color="gray">
-        <p id="todo"></p>
+        
+        
+        <!-- <p id="todo"></p> -->
+        <div>
+            {{# each items }}
+            <hr width="70%" color="gray">
+                <article class="item">
+                    <div>Task: {{ this.task }}</div>
+                    <div>Assigned to: {{ this.person }}</div>
+                </article>
+                <hr width="70%" color="gray">
+            {{/each}}
+        </div>
     </div>
     <!-- Tasks done box -->
     <div style="background-color:rgba(0,0,0,0.5); height: 500px; width: 670px; float: right; padding: 30px; margin-right: 50px; color: white; border-radius: 25px;">
@@ -70,6 +82,24 @@
 </body>
 
 </html>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+function getTask(){
+    console.log("kwrgkwjrgbkjr")
+    var task = document.getElementById("taskForm");
+    task.action = "/get-tasks";
+    fetch("/createtask", {
+        method: 'post',
+        body: JSON.stringify({task : document.getElementById("task").value, person : "Alisha"}),
+        headers: { 'Content-type': 'application/json' }
+    })
+}
+
+</script>
 
 <!-- - CSS - -->
 

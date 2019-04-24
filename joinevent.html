@@ -25,7 +25,7 @@
                     <h3> Create Event </h3>
                 </div>
                 <div class="card-body">
-                    <form >
+                    <form id="eventform">
                         <div class="input-group form-group">
                             <!-- <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -65,7 +65,7 @@
             <!-- event code -->
             <div class="box3" id="eventcode">
                 <div class="card-header">
-                    <h3> Event Code : </h3>
+                    <h3 id=code> </h3>
                 </div>
             </div>
     <!-- </div> -->
@@ -78,9 +78,12 @@ console.log("in create alallalala");
 function creatEvent(){
     console.log("in create event");
     document.getElementById("eventcode").style.visibility = "visible";
+    // document.getElementById("eventform").action = "/eventcode"
+    var id = Math.floor(Math.random()*90000) + 10000;
+    document.getElementById("code").innerHTML= "Event Code : "+id;
     fetch("/createevent", {
         method: 'post',
-        body: JSON.stringify({eventname : document.getElementById("eventname").value}),
+        body: JSON.stringify({eventname : document.getElementById("eventname").value, id : id}),
         headers: { 'Content-type': 'application/json' }
     })
 }
