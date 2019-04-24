@@ -34,14 +34,32 @@ router.get('/planner', function(req, res, next){
   res.render("planner")
 });
 
+<<<<<<< HEAD
 
+=======
+// router.get('/eventcode', function(req, res, next){
+//   var code;
+//   mongoose.connect(CONNECTION_URL, { useNewUrlParser: true }, function(err, db){
+//     assert.equal(null, err);
+//     var cursor = db.collection("event").findOne();
+//     cursor.forEach(function(doc, err){
+//       assert.equal(null, err);
+//       resultArray.push(doc);
+//     }, function(){
+//       db.close();
+//       res.render('planner', {items: resultArray});
+//     })
+//   })
+// })
+>>>>>>> e5d7459378a58f3952e0c3ed6cff28e9bb0732a3
 
 router.get('/get-tasks', function(req, res, next){
   var resultArray = [];
   mongoose.connect(CONNECTION_URL, { useNewUrlParser: true }, function(err, db){
     assert.equal(null, err);
     var cursor = db.collection("tasks").find();
-    var evname = db.collection("event").
+    console.log(nameofevent)
+  //  var evname = db.collection("event").
     cursor.forEach(function(doc, err){
       assert.equal(null, err);
       resultArray.push(doc);
