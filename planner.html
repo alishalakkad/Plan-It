@@ -17,13 +17,13 @@
 
     <!--Custom styles-->
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="eventfunctions.js"></script>
-    <script src="plannerFunc.js"></script>
+    <!-- <script src="eventfunctions.js"></script> -->
+    <!-- <script src="plannerFunc.js"></script> -->
 </head>
 
 <body>
     <div class="heading">
-            <img src="icon.png" onClick="showUrgent();" width="50px" height="50px"/>
+            <!-- <img src="icon.png" onClick="showUrgent();" width="50px" height="50px"/> -->
         <h1>*Event Name*</h1>
         <hr width="50%" color="white">
     </div>
@@ -53,9 +53,7 @@
     <!-- Tasks to do box -->
     <div id="myDiv" style="background-color:rgba(0,0,0,0.5); height: 500px; width: 670px; float: left; padding: 30px; margin-left: 50px; color: white; border-radius: 25px; overflow-y: auto;">
         <h3 class="heading">Tasks To Do</h3>
-        
-        
-        <!-- <p id="todo"></p> -->
+        <p id="todo"></p>
         <div>
             {{# each items }}
             <hr width="70%" color="gray">
@@ -84,7 +82,7 @@
 
 <!-- JAVASCRIPT -->
 
-<script>
+ <script>
 
 function getTask(){
     console.log("kwrgkwjrgbkjr")
@@ -97,7 +95,14 @@ function getTask(){
     })
 }
 
-</script>
+function showUrgent(){
+    var myPopup = window.open("", "", "width=200, height=100");
+}
+
+
+
+
+</script> 
 
 <!-- - CSS - -->
 
