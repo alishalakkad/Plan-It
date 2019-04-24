@@ -51,7 +51,7 @@
 </form>
     <hr>
     <!-- Tasks to do box -->
-    <div id="myDiv" style="background-color:rgba(0,0,0,0.5); height: 500px; width: 670px; float: left; padding: 30px; margin-left: 50px; color: white; border-radius: 25px;">
+    <div id="myDiv" style="background-color:rgba(0,0,0,0.5); height: 500px; width: 670px; float: left; padding: 30px; margin-left: 50px; color: white; border-radius: 25px; overflow-y: auto;">
         <h3 class="heading">Tasks To Do</h3>
         
         
@@ -68,10 +68,8 @@
         </div>
     </div>
     <!-- Tasks done box -->
-    <div style="background-color:rgba(0,0,0,0.5); height: 500px; width: 670px; float: right; padding: 30px; margin-right: 50px; color: white; border-radius: 25px;">
+    <div style="background-color:rgba(0,0,0,0.5); height: 500px; width: 670px; float: right; padding: 30px; margin-right: 50px; color: white; border-radius: 25px; overflow-y: auto;">
         <h3 class="heading">Tasks Done</h3>
-        <hr width="70%" color="gray">
-        <hr width="70%" color="gray">
 
     
     </div>
@@ -173,6 +171,7 @@ html, body {
   .card-header h3 {
       color: white;
   }
+
 
   .input-group-prepend span {
       width: 50px;
