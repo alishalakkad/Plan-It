@@ -56,36 +56,31 @@
         <p id="todo"></p>
         <div>
             {{# each items }}
-            <hr width="70%" color="gray">
                 <article class="item">
-                    <div>Task: {{ this.task }}</div>
-                    <div>Assigned to: {{ this.person }}</div>
+                    <ul><li><div> 
+                            <input type="checkbox" name="task" value="t" style="height: 17px;width: 17px">
+                    Task: {{ this.task }}
+                    <br>
+                    <img src="https://img.icons8.com/dusk/64/000000/task.png" width="20px">
+                    Assigned to: {{ this.person }}
+                </div></li></ul>
                 </article>
-                <hr width="70%" color="gray">
+                
             {{/each}}
         </div>
     </div>
     <!-- Tasks done box -->
     <div style="background-color:rgba(0,0,0,0.5); height: 500px; width: 670px; float: right; padding: 30px; margin-right: 50px; color: white; border-radius: 25px; overflow-y: auto;">
         <h3 class="heading">Tasks Done</h3>
-
-    
     </div>
-
-
-
-
 </body>
-
 </html>
-
 
 <!-- JAVASCRIPT -->
 
  <script>
-
 function getTask(){
-    console.log("kwrgkwjrgbkjr")
+    console.log("getting task")
     var task = document.getElementById("taskForm");
     task.action = "/get-tasks";
     fetch("/createtask", {
@@ -99,11 +94,7 @@ function showUrgent(){
     var myPopup = window.open("", "", "width=200, height=100");
 }
 
-
-
-
 </script> 
-
 <!-- - CSS - -->
 
 <style>
