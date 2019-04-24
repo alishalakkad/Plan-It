@@ -1,5 +1,5 @@
 var express = require('express');
-var router = express();
+var router = express.Router();
 var assert = require('assert');
 const mongoose = require("mongoose")
 const BodyParser = require("body-parser");
@@ -22,8 +22,8 @@ async function findUser(username) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  // res.render("mainpage")
-  res.sendFile(path.join(__dirname, "../mainpage.html"))
+  res.render("mainpage")
+  // res.sendFile(path.join(__dirname, "../mainpage.html"))
 });
 
 router.get('/event', function(req, res, next){
