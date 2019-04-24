@@ -3,7 +3,18 @@ function getTask(){
     var task = document.getElementById("task").value;
     console.log(task);
     task = ["hello", "kkk", "lll", "ooo"];
-    document.getElementById("myDiv").innerHTML = "";
+    //document.getElementById("myDiv").innerHTML = "";
+    
+    // console.log("kwrgkwjrgbkjr")
+    // var task = document.getElementById("taskForm");
+    // task.action = "/get-tasks";
+    // fetch("/createtask", {
+    //     method: 'post',
+    //     body: JSON.stringify({task : document.getElementById("task").value, person : "Alisha"}),
+    //     headers: { 'Content-type': 'application/json' }
+    // })
+
+
     //document.getElementById("todo").innerHTML= task ;
      for(var i = 0;i < task.length ;i++){
         var myDiv = document.getElementById("myDiv"); 
