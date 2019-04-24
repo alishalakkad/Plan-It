@@ -102,16 +102,15 @@ function clicked(){
     //add code to remove from tasks database and print list again
     
     //print to done list
-    
     document.getElementById("done").innerHTML += "<img src=\"https://img.icons8.com/color/48/000000/checked-checkbox.png\" width=\"30px\">";
-    document.getElementById("done").innerHTML += "should be an adding one";
+    document.getElementById("done").innerHTML += "should be an adding one"; //actual task print
     document.getElementById("done").innerHTML += "<img src=\"https://img.icons8.com/color/96/000000/close-window.png\" width=\"30px\" onclick=\"putBack()\">";
     document.getElementById("done").innerHTML += "<br>";
 }
 
 //function to put the event back in "tasks to do" section
 function putBack(){
-    //add code to remove from "done tasks" collection and add to "tasks" collection  
+    //add code to remove from "done tasks" collection and add to "tasks" collection and print again
     document.getElementById("done").innerHTML += "should remove";
 }
 </script> 
