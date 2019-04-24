@@ -1,9 +1,10 @@
 var express = require('express');
-var router = express.Router();
+var router = express();
 var assert = require('assert');
 const mongoose = require("mongoose")
 const BodyParser = require("body-parser");
 const mongodb = require('mongodb')
+const path = require('path')
 
 var found = 0;
 
@@ -21,7 +22,8 @@ async function findUser(username) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render("mainpage")
+  // res.render("mainpage")
+  res.sendFile(path.join(__dirname, "../mainpage.html"))
 });
 
 router.get('/event', function(req, res, next){
@@ -150,7 +152,12 @@ router.post('/signup', function(req, res, next){
           if(result){
             console.log('found')
             // db.close();
-            res.send(result);
+
+            router.render('/event', function(err, html){
+              res.sendFile(path.join(__dirname, "../joinevent.html"))
+            });
+            
+            // res.send(result);
             console.log("sent result!")
        //     location.href('../joinevent.html')
           }
