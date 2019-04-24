@@ -131,6 +131,51 @@ router.get("/event", function (req, res, next) {
 router.post('/signin', function (req, res) {
 
   // var MongoClient = mongodb.MongoClient;
+<<<<<<< HEAD
+=======
+ 
+    // Define where the MongoDB server is
+    // var url = 'mongodb://localhost:27017/sampsite';
+ 
+    // Connect to the server
+    mongoose.connect(CONNECTION_URL, function(err, db){
+      if (err) {
+        console.log('Unable to connect to the Server:', err);
+      } else {
+        console.log('Connected to Server');
+ 
+        // Get the documents collection
+        // var collection = db.collection('user');
+ 
+        // Get the student data passed from the form
+ 
+        // Insert the student data into the database
+        db.collection('user').findOne({username: req.body.username, password: req.body.password}, function(err, result){
+          if(err) throw err;
+          if(result){
+            console.log('found')
+            // db.close();
+
+            // router.render('/event', function(err, html){
+            //   res.sendFile(path.join(__dirname, "../joinevent.html"))
+            // });
+            
+            res.send(result);
+            console.log("sent result!")
+       //     location.href('../joinevent.html')
+          }
+          else {
+            console.log('not found')
+            // res.send(null);
+          }
+          db.close();
+          
+        })
+ 
+      }
+    });
+  })
+>>>>>>> 9283cd6ec808d46c9b7ca5c5cd508eec06f94a40
 
   // Define where the MongoDB server is
   // var url = 'mongodb://localhost:27017/sampsite';
