@@ -7,7 +7,7 @@ const mongodb = require('mongodb')
 const path = require('path')
 
 var found = 0;
-
+var nameofevent = "";
 
 const CONNECTION_URL = "mongodb+srv://cs252:cs252@planitdb-dvbrl.mongodb.net/test?retryWrites=truee";
 var connector;
@@ -54,12 +54,13 @@ router.get('/get-tasks', function(req, res, next){
   mongoose.connect(CONNECTION_URL, { useNewUrlParser: true }, function(err, db){
     assert.equal(null, err);
     var cursor = db.collection("tasks").find();
+    var evname = db.collection("event").
     cursor.forEach(function(doc, err){
       assert.equal(null, err);
       resultArray.push(doc);
     }, function(){
       db.close();
-      res.render('planner', {items: resultArray});
+      res.render('planner', {items: resultArray, item: nameofevent});
     })
   })
 });

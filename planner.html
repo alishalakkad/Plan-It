@@ -23,6 +23,10 @@
 
 <body>
     <div class="heading">
+            <img src="icon.png" onClick="showUrgent();" width="50px" height="50px"/>
+            {{# each iteams}}
+            <h1>*Event Name*</h1>
+            {{/each}}
             <!-- <img src="icon.png" onClick="showUrgent();" width="50px" height="50px"/> -->
         <h1>*Event Name*</h1>
         <hr width="50%" color="white">
@@ -53,7 +57,12 @@
     <!-- Tasks to do box -->
     <div id="myDiv" style="background-color:rgba(0,0,0,0.5); height: 500px; width: 670px; float: left; padding: 30px; margin-left: 50px; color: white; border-radius: 25px; overflow-y: auto;">
         <h3 class="heading">Tasks To Do</h3>
+<<<<<<< HEAD
+        
+        <!-- <p id="todo"></p> -->
+=======
         <p id="todo"></p>
+>>>>>>> b65da1dc0c2521d2bf6d1ced815862e4f8519044
         <div>
             {{# each items }}
                 <article class="item">
