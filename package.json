@@ -17,6 +17,7 @@
     "hbs": "^4.0.4",
     "mongodb": "^2.0.55",
     "mongoose": "^5.5.2",
+    "mongoskin": "^2.1.0",
     "mustache": "^3.0.1"
   },
   "devDependencies": {},
