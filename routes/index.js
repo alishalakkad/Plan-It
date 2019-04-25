@@ -36,33 +36,25 @@ router.get('/planner', function (req, res, next) {
   res.render("planner")
 });
 
-// router.get('/eventcode', function(req, res, next){
-//   var code;
-//   mongoose.connect(CONNECTION_URL, { useNewUrlParser: true }, function(err, db){
-//     assert.equal(null, err);
-//     var cursor = db.collection("event").findOne();
-//     cursor.forEach(function(doc, err){
-//       assert.equal(null, err);
-//       resultArray.push(doc);
-//     }, function(){
-//       db.close();
-//       res.render('planner', {items: resultArray});
-//     })
-//   })
-// })
 
 router.get('/get-tasks', function (req, res, next) {
   var resultArray = [];
+  var doneTasks= [];
   console.log('eid: '+eventsId)
   mongoose.connect(CONNECTION_URL, { useNewUrlParser: true }, function (err, db) {
     assert.equal(null, err);
     var cursor = db.collection("tasks").find({ eventcode: eventsId });
+    var cursor2 = db.collection("tasksDone").find({ eventcode: eventsId });
+    cursor2.forEach(function (doc, err) {
+      assert.equal(null, err);
+      doneTasks.push(doc);
+    })
     cursor.forEach(function (doc, err) {
       assert.equal(null, err);
       resultArray.push(doc);
     }, function () {
       db.close();
-      res.render('planner', { items: resultArray, item: nameofevent, evId: eventsId });
+      res.render('planner', { items: resultArray, item: nameofevent, evId: eventsId , doneTasks: doneTasks});
     })
   })
 });
@@ -182,6 +174,7 @@ router.post('/createtask', function (req, res, next) {
     db.collection('tasks').insertOne(task, function (err, result) {
       assert.equal(null, err);
       console.log('Task inserted');
+      res.send("sent!")
 
       // res.jsonp({success : true})
       // alert("Successfully signed up!");
@@ -229,21 +222,6 @@ router.post('/createevent', function (req, res, next) {
   console.log(req.body);
   // var id = Math.floor(Math.random()*90000) + 10000;
   var unique = 0;
-  // connector = mongoose.connect(CONNECTION_URL,{ useNewUrlParser: true }, function(err, db){
-  //     assert.equal(null, err);
-  //     while(unique == 0){
-  //       db.collection('user').findOne({username: req.body.username, password: req.body.password}, function(err, result){
-  //         if(err) throw err;
-  //         if(result){
-  //           id = Math.floor(Math.random()*90000) + 10000;
-  //         }
-  //         else {
-  //           unique = 1;
-  //         }
-  //         console.log("hello")
-  //     })
-  //   }
-  // })
 
   var val;
   var event = {
@@ -269,13 +247,6 @@ router.post('/createevent', function (req, res, next) {
       db.close();
     });
   })
-  // let user = await connector.then(async () => {
-  //   console.log("coming here")
-  //   return returnid(id);
-  // })
-
-  // return id;
-  // res.redirect('/');
 
 });
 
@@ -290,11 +261,6 @@ router.post('/createevent', function (req, res, next) {
             console.log(result)
             db.collection('tasks').deleteOne(result);
             db.collection('tasksDone').insertOne(result);
-            // db.close();
-
-            // router.render('/event', function(err, html){
-            //   res.sendFile(path.join(__dirname, "../joinevent.html"))
-            // });
             
             res.send(result);
             console.log("sent result!")
@@ -312,89 +278,6 @@ router.post('/createevent', function (req, res, next) {
 module.exports = router;
 
 
-
-  // Define where the MongoDB server is
-  // var url = 'mongodb://localhost:27017/sampsite';
-
-  // Connect to the server
-  // mongoose.connect(CONNECTION_URL, function (err, db) {
-  //   if (err) {
-  //     console.log('Unable to connect to the Server:', err);
-  //   } else {
-
-  //     console.log('Connected to Server');
-
-  //     // Get the documents collection
-  //     // var collection = db.collection('user');
-
-  //     // Get the student data passed from the form
-
-  //     // Insert the student data into the database
-  //     db.collection('user').findOne({ username: req.body.username, password: req.body.password }, function (err, result) {
-  //       if (err) throw err;
-  //       if (result) {
-  //         console.log('found')
-  //         // db.close();
-
-  //         // router.render('/event', function(err, html){
-  //         //   res.sendFile(path.join(__dirname, "../joinevent.html"))
-  //         // });
-  //         
-  //         // res.send(result);
-  //         console.log("sent result!")
-  //         //     location.href('../joinevent.html')
-  //       }
-  //       else {
-  //         console.log('not found')
-  //       }
-  //       db.close();
-
-  //     })
-
-  //   }
-  // });
-
-
-// console.log(req.body.username + "   wlrkngwlrgnlwr")
-//  connector = mongoose.connect(CONNECTION_URL,{ useNewUrlParser: true }, function(err, db){
-//    assert.equal(null, err);
-//    db.collection('user').findOne({username: req.body.username, password: req.body.password}, function(err, result){
-//      if(err) throw err;
-//      if(result){
-//        console.log('found')
-//        db.close();
-//        res.redirect("event");     
-//        }
-//      else {
-//        console.log('not found')
-//      }
-//      db.close();
-
-//    })
-
-//  res.redirect(303, "/event"); 
-// });
-//rest of code 
-
-// console.log(req.body)
-
-// connector = mongoose.connect(CONNECTION_URL,{ useNewUrlParser: true }, function(err, db){
-//   assert.equal(null, err);
-
-//   db.collection('user').findOne({username: req.body.username, password: req.body.password}, function(err, result){
-//     if(err) throw err;
-//     if(result){
-//       console.log('found')
-//       db.close();
-//       return res.redirect("/event");
-//  //     location.href('../joinevent.html')
-//     }
-//     else {
-//       console.log('not found')
-//     }
-//     db.close();
-
-//   })
 
 
 
