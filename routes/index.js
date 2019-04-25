@@ -58,7 +58,7 @@ router.get('/get-tasks', function (req, res, next) {
      }
      else {
       membersofevents.push(curruser)
-     
+     }
      
      console.log(membersofevents)
   
@@ -71,7 +71,7 @@ router.get('/get-tasks', function (req, res, next) {
          console.log('not updated')
        }
      })
-    }
+    
 
       }
       else {
@@ -87,15 +87,17 @@ router.get('/get-tasks', function (req, res, next) {
     cursor2.forEach(function (doc, err) {
       assert.equal(null, err);
       doneTasks.push(doc);
-    })
+    },function(){
     cursor.forEach(function (doc, err) {
       assert.equal(null, err);
       resultArray.push(doc);
     }, function () {
    //   db.close();
+   console.log("rendering planner")
       res.render('planner', { items: resultArray, item: nameofevent, evId: eventsId , doneTasks: doneTasks, listofmems: membersofevents });
     })
-    })
+  })
+})
   
 });
 
@@ -150,7 +152,7 @@ router.get('/get-signin', function (req, res, next) {
       assert.equal(null, err);
       resultArray.push(doc.username + ";" + doc.password);
     }, function () {
-      db.close();
+      // db.close();
       res.render('mainpage', { usercollection: resultArray });
     })
   })
@@ -192,7 +194,7 @@ router.post('/signin', function (req, res) {
             console.log('not found')
            //  res.send("null");
           }
-          db.close();
+          // db.close();
           
         })
  
@@ -201,6 +203,7 @@ router.post('/signin', function (req, res) {
   })
 
 router.post('/createtask', function (req, res, next) {
+  console.log("hellllooooooo")
   var task = {
     task: req.body.task,
     person: req.body.person,
@@ -248,7 +251,7 @@ router.post('/joineventpage', function (req, res) {
             console.log('event not found')
          //   res.send(result)
           }
-          db.close();
+          // db.close();
           
         })
  
@@ -284,7 +287,7 @@ router.post('/createevent', function (req, res, next) {
       // alert("Successfully signed up!");
 
       // console.log(db.collection('event').find({name:req.body.eventname}));
-      db.close();
+      // db.close();
     });
   })
 
@@ -310,7 +313,7 @@ router.post('/createevent', function (req, res, next) {
             console.log('not found')
             // res.send(null);
           }
-          db.close();
+          // db.close();
           
         })
       })
@@ -334,12 +337,34 @@ router.post('/createevent', function (req, res, next) {
           console.log('not found')
           // res.send(null);
         }
-        db.close();
+        // db.close();
         
       })
     })
 })
 
+router.post("/deleteTask", function(req, res, next){
+  mongoose.connect(CONNECTION_URL, function(err, db){
+    db.collection('tasks').findOne({task: req.body.taskToDelete, person: req.body.personToDelete}, function(err, result){
+      if(err) throw err;
+      if(result){
+        console.log('found')
+        console.log(result)
+        db.collection('tasks').deleteOne(result);
+        
+        res.send(result);
+        console.log("sent result!")
+   //     location.href('../joinevent.html')
+      }
+      else {
+        console.log('not found')
+        // res.send(null);
+      }
+      // db.close();
+      
+    })
+  })
+})
 router.get("/getcodes", function(req, res, next){
   var events = []
   console.log("in get codes")

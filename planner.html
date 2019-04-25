@@ -22,16 +22,15 @@
 </head>
 
 <body>
-    <div class="heading" style="justify-content: center;position: relative;">
+        <div class="heading" style="justify-content: center;position: relative;">
             <!-- <img src="icon.png" onClick="showUrgent();" width="50px" height="50px"/> -->
             
             <h1 style="text-align:center;">{{ item }}</h1><hr width="50%" color="white">
-            
+
             <button class="btn btn-outline-secondary" id="logout" type="submit" style="background-color: #FFC312; color: black;position:absolute;right:2%; " onclick="logout()">Logout</button>
-            <h4>Event code: {{evId}}</h4>
+            <h4>Event code: <div id="eventcod">{{evId}}</div></h4>
             <button class="btn btn-outline-secondary" id="exit-event" type="submit" style="background-color: #FFC312; color: black;right:2%; height: 25px; width: 100px;margin: 2px; font-size: 10px" onclick="exitEvent()">Exit Event</button>
-            
-            
+
         <hr width="50%" color="white">
     </div>
     
@@ -74,11 +73,11 @@
                     <ul><li><div> 
                             <input type="checkbox" name="{{this.task}};{{this.person}}" value="t" style="height: 17px;width: 17px" onclick="clicked(this.name)">
                     Task: {{ this.task }}
-                    
+                    <img class="crossButton" src="https://img.icons8.com/office/16/000000/delete-sign.png" width="25px" name="{{this.task}};{{this.person}}" onclick="deleteTask(this.name)">
                     <br>
                     <img src="https://img.icons8.com/dusk/64/000000/add-user-group-woman-man.png" width="20px">
                     Assigned to: {{ this.person }}
-                    <img src="https://img.icons8.com/office/16/000000/delete-sign.png" width="25px" name="{{this.task}};{{this.person}}" onclick="">
+                    
                 </div></li></ul>
                 </article>
                 
@@ -94,12 +93,13 @@
             {{# each doneTasks }}
                 <article class="item">
                     <ul><li><div> 
-                        <img src="https://img.icons8.com/cotton/64/000000/checkmark.png" width="30px">
+                        <!-- <img src="https://img.icons8.com/cotton/64/000000/checkmark.png" width="30px" name="{{this.task}};{{this.person}}" onclick="putBack(this.name)"> -->
+                        <input type="checkbox" value="t" style="height: 17px;width: 17px" name="{{this.task}};{{this.person}}" onclick="putBack(this.name)" checked>
                     Task: {{ this.task }}
                     <br>
                     <img src="https://img.icons8.com/dusk/64/000000/add-user-group-woman-man.png" width="22px">
                     Assigned to: {{ this.person }}
-                    <img src="https://img.icons8.com/office/16/000000/delete-sign.png" width="25px" name="{{this.task}};{{this.person}}" onclick="putBack(this.name)">
+                    <!-- <img src="https://img.icons8.com/office/16/000000/delete-sign.png" width="25px" name="{{this.task}};{{this.person}}" onclick="putBack(this.name)"> -->
                 </div></li></ul>
                 </article>
                 
@@ -173,25 +173,30 @@ function putBack(task){
     }); 
 }
 
-    function exitEvent(){
-        fetch("/get-tasks", {
+function deleteTask(task){
+    //add code to remove from "done tasks" collection and add to "tasks" collection and print again
+    // document.getElementById("done").innerHTML += "should remove";
+    var taskToDelete = task.split(";")[0]
+    var personToDelete = task.split(";")[1]
+    // console.log(taskToPutBack + " " + personToPutBack) 
+    fetch("/deleteTask", {
+        method: 'post',
+        body: JSON.stringify({taskToDelete : taskToDelete, personToDelete : personToDelete}),
+        headers: { 'Content-type': 'application/json' }
     }).then(function(response){
         if(response){
-            location.href = "/event";
+            location.href = "/get-tasks"
         }
-    });
+    }); 
+}
+
+function exitEvent(){
+        location.href = "/event"
     }
 
     function logout(){
-        fetch("/get-tasks", {
-    }).then(function(response){
-        if(response){
-            location.href = "/";
-        }
-    });
-
+        location.href = "/"
     }
-
 </script> 
 <!-- - CSS - -->
 
@@ -378,5 +383,14 @@ input:focus {
 
 .links a {
     margin-left: 4px;
+}
+
+.crossButton {
+    position: absolute;
+    right: 35px;
+}
+
+#myDiv {
+    position: relative;
 }
 </style>
