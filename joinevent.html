@@ -17,7 +17,7 @@
     <script src="eventfunctions.js"></script>
 </head>
 <body>
-    <div class="heading"><h1>Plan-It</h1></div><hr width="50%" color="white">
+    <div class="heading"><h1>Hello {{ curname }}!</h1></div><hr width="50%" color="white">
     <div>
         <!-- Create Event Part -->
         <div class="box1">
@@ -54,9 +54,9 @@
                             <!-- <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div> -->
-                            <input type="text" class="form-control" placeholder="Event Code">
+                            <input id="eventid" type="text" class="form-control" placeholder="Event Code">
                         </div>
-                        <div class="form-group" onclick="joinEvent()">
+                        <div class="form-group">
                             <input type="button" value="Join" class="btn float-right login_btn" onclick="joinEvent()">
                         </div>
                     </form>
@@ -86,6 +86,28 @@ function creatEvent(){
         body: JSON.stringify({eventname : document.getElementById("eventname").value, id : id}),
         headers: { 'Content-type': 'application/json' }
     })
+}
+
+function joinEvent(){
+    console.log("in join event")
+    fetch("/joineventpage", {
+        method: 'post',
+        body: JSON.stringify({eventcode : parseInt(document.getElementById("eventid").value)}),
+        headers: { 'Content-type': 'application/json' }
+    }).then(function(response){
+        console.log("got response")
+        console.log(response)
+    
+        if(response){
+            console.log("got respodddnse")
+            
+            location.href = "/get-tasks";
+        }
+        else{
+            console.log("wkefjbwkef")
+            alert("not an event")
+        }
+    });
 }
 
 </script>
