@@ -22,14 +22,16 @@
 </head>
 
 <body>
-    <div class="heading">
+    <div class="heading" style="justify-content: center;position: relative;">
             <!-- <img src="icon.png" onClick="showUrgent();" width="50px" height="50px"/> -->
             
-            <h1>{{ item }}</h1><hr width="50%" color="white">
-            <h3>Event code: <div id="eventcod">{{evId}}</h3></div>
-
-            <!-- <img src="icon.png" onClick="showUrgent();" width="50px" height="50px"/> -->
-        <!-- <h1>*Event Name*</h1> -->
+            <h1 style="text-align:center;">{{ item }}</h1><hr width="50%" color="white">
+            
+            <button class="btn btn-outline-secondary" id="logout" type="submit" style="background-color: #FFC312; color: black;position:absolute;right:2%; " onclick="logout()">Logout</button>
+            <h4>Event code: {{evId}}</h4>
+            <button class="btn btn-outline-secondary" id="exit-event" type="submit" style="background-color: #FFC312; color: black;right:2%; height: 25px; width: 100px;margin: 2px; font-size: 10px" onclick="exitEvent()">Exit Event</button>
+            
+            
         <hr width="50%" color="white">
     </div>
     
@@ -72,9 +74,11 @@
                     <ul><li><div> 
                             <input type="checkbox" name="{{this.task}};{{this.person}}" value="t" style="height: 17px;width: 17px" onclick="clicked(this.name)">
                     Task: {{ this.task }}
+                    
                     <br>
-                    <img src="https://img.icons8.com/dusk/64/000000/task.png" width="20px">
+                    <img src="https://img.icons8.com/dusk/64/000000/add-user-group-woman-man.png" width="20px">
                     Assigned to: {{ this.person }}
+                    <img src="https://img.icons8.com/office/16/000000/delete-sign.png" width="25px" name="{{this.task}};{{this.person}}" onclick="">
                 </div></li></ul>
                 </article>
                 
@@ -93,7 +97,7 @@
                         <img src="https://img.icons8.com/cotton/64/000000/checkmark.png" width="30px">
                     Task: {{ this.task }}
                     <br>
-                    <img src="https://img.icons8.com/dusk/64/000000/task.png" width="20px">
+                    <img src="https://img.icons8.com/dusk/64/000000/add-user-group-woman-man.png" width="22px">
                     Assigned to: {{ this.person }}
                     <img src="https://img.icons8.com/office/16/000000/delete-sign.png" width="25px" name="{{this.task}};{{this.person}}" onclick="putBack(this.name)">
                 </div></li></ul>
@@ -168,6 +172,26 @@ function putBack(task){
         }
     }); 
 }
+
+    function exitEvent(){
+        fetch("/get-tasks", {
+    }).then(function(response){
+        if(response){
+            location.href = "/event";
+        }
+    });
+    }
+
+    function logout(){
+        fetch("/get-tasks", {
+    }).then(function(response){
+        if(response){
+            location.href = "/";
+        }
+    });
+
+    }
+
 </script> 
 <!-- - CSS - -->
 
