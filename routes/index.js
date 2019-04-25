@@ -12,7 +12,7 @@ var curruser = "";
 var eventsId = 0;
 var membersofevents = [];
 
-const CONNECTION_URL = "mongodb+srv://cs252:cs252@planitdb-dvbrl.mongodb.net/test?retryWrites=truee";
+const CONNECTION_URL = "mongodb+srv://cs252:cs252@planitdb-dvbrl.mongodb.net/mydb?retryWrites=truee";
 var connector;
 
 router.use(BodyParser.json());
@@ -58,7 +58,7 @@ router.get('/get-tasks', function (req, res, next) {
      }
      else {
       membersofevents.push(curruser)
-     }
+     
      
      console.log(membersofevents)
   
@@ -71,12 +71,14 @@ router.get('/get-tasks', function (req, res, next) {
          console.log('not updated')
        }
      })
+    }
 
       }
       else {
         console.log('not found')
     }
    });
+  
 
   
 
@@ -93,7 +95,8 @@ router.get('/get-tasks', function (req, res, next) {
    //   db.close();
       res.render('planner', { items: resultArray, item: nameofevent, evId: eventsId , doneTasks: doneTasks, listofmems: membersofevents });
     })
-  })
+    })
+  
 });
 
 
@@ -335,6 +338,24 @@ router.post('/createevent', function (req, res, next) {
         
       })
     })
+})
+
+router.get("/getcodes", function(req, res, next){
+  var events = []
+  console.log("in get codes")
+  mongoose.connect(CONNECTION_URL, { useNewUrlParser: true }, function (err, db) {
+    assert.equal(null, err);
+  var cursor2 = db.collection("event").find({members : curruser});
+    cursor2.forEach(function (doc, err) {
+      assert.equal(null, err);
+  
+          events.push(doc);
+    }, function () {
+      //   db.close();
+      console.log(events)
+         res.render('joinevent', { eventcodes : events });
+    })
+  })
 })
 module.exports = router;
 

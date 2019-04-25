@@ -7,8 +7,8 @@ var path = require("path");
 // const User = mongoose.model('user', userSchema, 'user')
 const ObjectId = require("mongodb").ObjectID;
 
-const CONNECTION_URL = "mongodb+srv://cs252:cs252@planitdb-dvbrl.mongodb.net/test?retryWrites=truee";
-const DATABASE_NAME = "test";
+const CONNECTION_URL = "mongodb+srv://cs252:cs252@planitdb-dvbrl.mongodb.net/mydb?retryWrites=truee";
+const DATABASE_NAME = "mydb";
 
 var app = Express();
 
