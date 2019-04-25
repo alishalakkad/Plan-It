@@ -217,7 +217,7 @@ router.post('/createtask', function (req, res, next) {
       // alert("Successfully signed up!");
 
       // console.log(db.collection('event').find({name:req.body.eventname}));
-      db.close();
+    //  db.close();
     });
   })
 });
