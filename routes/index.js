@@ -9,6 +9,7 @@ const path = require('path')
 var found = 0;
 var nameofevent = "";
 var curruser = "";
+var eventsId = 0;
 
 const CONNECTION_URL = "mongodb+srv://cs252:cs252@planitdb-dvbrl.mongodb.net/test?retryWrites=truee";
 var connector;
@@ -52,15 +53,16 @@ router.get('/planner', function (req, res, next) {
 
 router.get('/get-tasks', function (req, res, next) {
   var resultArray = [];
+  console.log('eid: '+eventsId)
   mongoose.connect(CONNECTION_URL, { useNewUrlParser: true }, function (err, db) {
     assert.equal(null, err);
-    var cursor = db.collection("tasks").find();
+    var cursor = db.collection("tasks").find({ eventcode: eventsId });
     cursor.forEach(function (doc, err) {
       assert.equal(null, err);
       resultArray.push(doc);
     }, function () {
       db.close();
-      res.render('planner', { items: resultArray, item: nameofevent });
+      res.render('planner', { items: resultArray, item: nameofevent, evId: eventsId });
     })
   })
 });
@@ -169,7 +171,8 @@ router.post('/signin', function (req, res) {
 router.post('/createtask', function (req, res, next) {
   var task = {
     task: req.body.task,
-    person: req.body.person
+    person: req.body.person,
+    eventcode: req.body.eventcode
   };
   console.log(task)
 
@@ -204,6 +207,7 @@ router.post('/joineventpage', function (req, res) {
        //     console.log('event found')
          //   console.log(parseInt(req.body.eventcode))
             nameofevent = result.name
+            eventsId = parseInt(req.body.eventcode)
             res.send(result);
             //console.log(result.name)
           }
@@ -256,6 +260,7 @@ router.post('/createevent', function (req, res, next) {
       assert.equal(null, err);
       console.log('Event inserted');
       nameofevent = req.body.eventname
+      eventsId = req.body.id
 
       // res.jsonp({success : true})
       // alert("Successfully signed up!");
