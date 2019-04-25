@@ -275,6 +275,30 @@ router.post('/createevent', function (req, res, next) {
         })
       })
   })
+
+  router.post("/putbacktask", function(req, res, next){
+    mongoose.connect(CONNECTION_URL, function(err, db){
+      db.collection('tasksDone').findOne({task: req.body.taskToPutBack, person: req.body.personToPutBack}, function(err, result){
+        if(err) throw err;
+        if(result){
+          console.log('found')
+          console.log(result)
+          db.collection('tasksDone').deleteOne(result);
+          db.collection('tasks').insertOne(result);
+          
+          res.send(result);
+          console.log("sent result!")
+     //     location.href('../joinevent.html')
+        }
+        else {
+          console.log('not found')
+          // res.send(null);
+        }
+        db.close();
+        
+      })
+    })
+})
 module.exports = router;
 
 
