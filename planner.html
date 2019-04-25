@@ -25,7 +25,8 @@
     <div class="heading">
             <!-- <img src="icon.png" onClick="showUrgent();" width="50px" height="50px"/> -->
             
-            <h1>{{ item }}</h1>
+            <h1>{{ item }}</h1><hr width="50%" color="white">
+            <h3>Event code: <div id="eventcod">{{evId}}</h3></div>
 
             <!-- <img src="icon.png" onClick="showUrgent();" width="50px" height="50px"/> -->
         <!-- <h1>*Event Name*</h1> -->
@@ -105,17 +106,12 @@
 function getTask(){
     console.log("getting task")
     var task = document.getElementById("taskForm");
-    
+    task.action = "/get-tasks";
     fetch("/createtask", {
         method: 'post',
-        body: JSON.stringify({task : document.getElementById("task").value, person : "Alisha"}),
+        body: JSON.stringify({task : document.getElementById("task").value, person : "Aahan", eventcode: parseInt(document.getElementById("eventcod").textContent)}),
         headers: { 'Content-type': 'application/json' }
-    }).then(function(response){
-        if(response){
-            task.action = "/get-tasks";
-        }
-    });
-   
+    })
 }
 
 function showUrgent(){
