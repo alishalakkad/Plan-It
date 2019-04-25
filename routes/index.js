@@ -10,6 +10,7 @@ var found = 0;
 var nameofevent = "";
 var curruser = "";
 var eventsId = 0;
+var membersofevents = [];
 
 const CONNECTION_URL = "mongodb+srv://cs252:cs252@planitdb-dvbrl.mongodb.net/test?retryWrites=truee";
 var connector;
@@ -43,6 +44,42 @@ router.get('/get-tasks', function (req, res, next) {
   console.log('eid: '+eventsId)
   mongoose.connect(CONNECTION_URL, { useNewUrlParser: true }, function (err, db) {
     assert.equal(null, err);
+
+    db.collection("event").findOne({eventId: eventsId}, function(err, result){
+      if (err) throw err;
+      if (result) {
+        console.log('found the event')
+     //   console.log(result.members)
+     //   console.log(curruser)
+     membersofevents = result.members;
+
+     if(membersofevents.includes(curruser)){
+       //do nothing
+     }
+     else {
+      membersofevents.push(curruser)
+     }
+     
+     console.log(membersofevents)
+  
+     db.collection("event").updateOne({eventId: eventsId},{$set : {members: membersofevents}}, function(err, result){
+       if(err) throw err
+       if(result) {
+         console.log('updated')
+       }
+       else {
+         console.log('not updated')
+       }
+     })
+
+      }
+      else {
+        console.log('not found')
+    }
+   });
+
+  
+
     var cursor = db.collection("tasks").find({ eventcode: eventsId });
     var cursor2 = db.collection("tasksDone").find({ eventcode: eventsId });
     cursor2.forEach(function (doc, err) {
@@ -53,8 +90,8 @@ router.get('/get-tasks', function (req, res, next) {
       assert.equal(null, err);
       resultArray.push(doc);
     }, function () {
-      db.close();
-      res.render('planner', { items: resultArray, item: nameofevent, evId: eventsId , doneTasks: doneTasks});
+   //   db.close();
+      res.render('planner', { items: resultArray, item: nameofevent, evId: eventsId , doneTasks: doneTasks, listofmems: membersofevents });
     })
   })
 });
@@ -227,7 +264,7 @@ router.post('/createevent', function (req, res, next) {
   var event = {
     name: req.body.eventname,
     eventId: req.body.id,
-    members: ""
+    members: []
   };
   console.log(event)
 

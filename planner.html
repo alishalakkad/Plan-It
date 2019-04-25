@@ -45,11 +45,16 @@
                   
             <div class="input-group-append">
                 <form action="/action_page.php" style="height:10px;">
-                    <select name="Members" style="background-color: #FFC312; color: black;">
-                      <option value="Member 1">Member 1</option>
+                    
+                    <select id="selectedone" name="Members" style="background-color: #FFC312; color: black;">
+                            {{# each listofmems }}
+                      <!-- <option value="Member 1">Member 1</option>
                       <option value="Member 2">Member 2</option>
-                      <option value="Member 3">Member 3</option>
+                      <option value="Member 3">Member 3</option> -->
+                      <option value="{{ this }}">{{this}}</option>
+                      {{/each}}
                     </select>
+                    
                     <br><br>
                 </form>
                 <button class="btn btn-outline-secondary" id="add" type="submit" style="background-color: #FFC312; color: black">Add</button>
@@ -106,12 +111,20 @@
 function getTask(){
     console.log("getting task")
     var task = document.getElementById("taskForm");
-    task.action = "/get-tasks";
+
+    var e = document.getElementById("selectedone");
+    console.log("found"+e)
+
+    // task.action = "/get-tasks";
     fetch("/createtask", {
         method: 'post',
-        body: JSON.stringify({task : document.getElementById("task").value, person : "Aahan", eventcode: parseInt(document.getElementById("eventcod").textContent)}),
+        body: JSON.stringify({task : document.getElementById("task").value, person : e.options[e.selectedIndex].value, eventcode: parseInt(document.getElementById("eventcod").textContent)}),
         headers: { 'Content-type': 'application/json' }
-    })
+    }).then(function(response){
+        if(response){
+            task.action = "/get-tasks";
+        }
+    });
 }
 
 function showUrgent(){
