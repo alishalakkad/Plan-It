@@ -297,4 +297,34 @@ router.post('/createevent', function(req, res, next){
     
   });
 
+
+
+  router.post("/removetask", function(req, res, next){
+      mongoose.connect(CONNECTION_URL, function(err, db){
+        db.collection('tasks').findOne({task: req.body.taskToRemove, person: req.body.personToRemove}, function(err, result){
+          if(err) throw err;
+          if(result){
+            console.log('found')
+            console.log(result)
+            db.collection('tasks').deleteOne(result);
+            db.collection('tasksDone').insertOne(result);
+            // db.close();
+
+            // router.render('/event', function(err, html){
+            //   res.sendFile(path.join(__dirname, "../joinevent.html"))
+            // });
+            
+            res.send(result);
+            console.log("sent result!")
+       //     location.href('../joinevent.html')
+          }
+          else {
+            console.log('not found')
+            // res.send(null);
+          }
+          db.close();
+          
+        })
+      })
+  })
 module.exports = router;

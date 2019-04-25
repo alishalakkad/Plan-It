@@ -61,7 +61,7 @@
             {{# each items }}
                 <article class="item">
                     <ul><li><div> 
-                            <input type="checkbox" name="task" value="t" style="height: 17px;width: 17px" onclick="clicked()">
+                            <input type="checkbox" name="{{this.task}};{{this.person}}" value="t" style="height: 17px;width: 17px" onclick="clicked(this.name)">
                     Task: {{ this.task }}
                     <br>
                     <img src="https://img.icons8.com/dusk/64/000000/task.png" width="20px">
@@ -100,10 +100,16 @@ function showUrgent(){
 }
 
 //function to move task from "to do" to "done"
-function clicked(){
+function clicked(task){
     //add code to remove from tasks database and print list again
-    var val = 
-    
+    var taskToRemove = task.split(";")[0]
+    var personToRemove = task.split(";")[1]
+    console.log(taskToRemove + " " + personToRemove) 
+    fetch("/removetask", {
+        method: 'post',
+        body: JSON.stringify({taskToRemove : taskToRemove, personToRemove : personToRemove}),
+        headers: { 'Content-type': 'application/json' }
+    })   
     //print to done list
     document.getElementById("done").innerHTML += "<img src=\"https://img.icons8.com/color/48/000000/checked-checkbox.png\" width=\"30px\">";
     document.getElementById("done").innerHTML += "should be an adding one"; //actual task print
