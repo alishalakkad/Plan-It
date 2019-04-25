@@ -60,7 +60,7 @@ router.get('/get-tasks', function (req, res, next) {
       membersofevents.push(curruser)
      }
      
-     console.log(membersofevents)
+   //  console.log(membersofevents)
   
      db.collection("event").updateOne({eventId: eventsId},{$set : {members: membersofevents}}, function(err, result){
        if(err) throw err
@@ -159,7 +159,7 @@ router.get('/get-signin', function (req, res, next) {
 })
 
 router.get("/event", function (req, res, next) {
-  console.log("my name is anthony gonzolvas")
+ // console.log("my name is anthony gonzolvas")
   res.render("joinevent", { curname: curruser })
 });
 
@@ -185,7 +185,7 @@ router.post('/signin', function (req, res) {
             console.log('found')
 
             curruser = req.body.username
-            console.log(result)
+          //  console.log(result)
             res.send(result);
             console.log("sent result!")
        //     location.href('../joinevent.html')
@@ -301,7 +301,7 @@ router.post('/createevent', function (req, res, next) {
           if(err) throw err;
           if(result){
             console.log('found')
-            console.log(result)
+        //    console.log(result)
             db.collection('tasks').deleteOne(result);
             db.collection('tasksDone').insertOne(result);
             
@@ -325,7 +325,7 @@ router.post('/createevent', function (req, res, next) {
         if(err) throw err;
         if(result){
           console.log('found')
-          console.log(result)
+        //  console.log(result)
           db.collection('tasksDone').deleteOne(result);
           db.collection('tasks').insertOne(result);
           
