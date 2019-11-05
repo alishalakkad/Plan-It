@@ -16,7 +16,7 @@
     "express": "^4.16.4",
     "hbs": "^4.0.4",
     "mongodb": "^2.0.55",
-    "mongoose": "^5.5.2",
+    "mongoose": "^5.7.5",
     "mongoskin": "^2.1.0",
     "mustache": "^3.0.1"
   },
